@@ -2,7 +2,7 @@
 import React from 'react'
 
 const page = async() => {
-    const authors = await fetch(`${process.env.API_LINK}/author/allAuthor`,{method:'GET',headers: { 'Content-Type': 'application/json', }}).then(res => res.json()).then(data => { return data })
+    const authors = await fetch(`${process.env.API_LINK}/author/allAuthor`,{method:'GET',headers: { 'Content-Type': 'application/json', }}).then(res => {return res.json()}).then(data => { return data })
     console.log(authors)
     return (
         <div><table className="table-auto">
