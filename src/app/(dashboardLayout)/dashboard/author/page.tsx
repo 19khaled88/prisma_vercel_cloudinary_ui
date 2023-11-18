@@ -1,4 +1,5 @@
 "use client"
+import config from '../../../../config/index'
 import { useState } from "react"
 import { toast } from "react-toastify";
 
@@ -36,18 +37,19 @@ const Author = () => {
         formData.append('file', imgurl)
         formData.append("upload_preset", "daamw3ao");
 
-        const fetched = await fetch(`${process.env.CLOUDINARY_URL}`, {
+        const fetched = await fetch(`https://api.cloudinary.com/v1_1/be-fresh-ltd/image/upload`, {
             method: 'POST',
             body: formData
-        }).then((response) => response.json()).catch(error => error.json())
+        }).then((response) => response.json()).catch(error => console.log(error))
+       
         const store = { ...inputsValue, imgurl: fetched.secure_url }
-        
         try {
-            const response = await fetch(`${process.env.API_LINK}/author/create`, {
+            const response = await fetch(`https://prisma-vercel-cloudinary-server.vercel.app/api/v1/author/create`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', },
                 body: JSON.stringify(store )
-            }).then(res => res.json()).then(data => { return data })
+            }).then(res => res.json()).then(data => data)
+            
             if(response.status ===200 && response.success === true){
                 toast.success(response.message)
             }
