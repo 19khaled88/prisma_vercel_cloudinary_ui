@@ -12,6 +12,10 @@ const menuItems = [
         title: 'Author',
     },
     {
+        href: '/dashboard/authorList',
+        title: 'AuthorList',
+    },
+    {
         href: '/dashboard/about',
         title: 'About',
     },
