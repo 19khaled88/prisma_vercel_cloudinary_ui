@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState } from "react";
 import { toast } from "react-toastify";
 
 const Author = () => {
@@ -41,19 +41,19 @@ const Author = () => {
             method: 'POST',
             body: formData
         }).then((response) => response.json()).catch(error => console.log(error))
-       
+
         const store = { ...inputsValue, imgurl: fetched.secure_url }
         try {
             const response = await fetch(`https://prisma-vercel-cloudinary-server.vercel.app/api/v1/author/create`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', },
-                body: JSON.stringify(store )
+                body: JSON.stringify(store)
             }).then(res => res.json()).then(data => data)
-            
-            if(response.status ===200 && response.success === true){
+
+            if (response.status === 200 && response.success === true) {
                 toast.success(response.message)
             }
-        } catch (error:any) {
+        } catch (error: any) {
             toast.error(error.message)
         }
 
