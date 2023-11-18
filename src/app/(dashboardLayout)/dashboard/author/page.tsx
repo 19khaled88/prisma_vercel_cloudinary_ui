@@ -36,14 +36,14 @@ const Author = () => {
         formData.append('file', imgurl)
         formData.append("upload_preset", "daamw3ao");
 
-        const fetched = await fetch('https://api.cloudinary.com/v1_1/be-fresh-ltd/image/upload', {
+        const fetched = await fetch(`${process.env.CLOUDINARY_URL}`, {
             method: 'POST',
             body: formData
         }).then((response) => response.json()).catch(error => error.json())
         const store = { ...inputsValue, imgurl: fetched.secure_url }
         
         try {
-            const response = await fetch('http://localhost:3039/api/v1/author/create', {
+            const response = await fetch(`${process.env.API_LINK}/author/create`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', },
                 body: JSON.stringify(store )

@@ -1,8 +1,8 @@
 "use client"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+
 const page = () => {
-    const router = useRouter()
+    
     return (
         <div>
             <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
