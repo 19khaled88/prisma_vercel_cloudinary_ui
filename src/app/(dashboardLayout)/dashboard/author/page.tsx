@@ -1,5 +1,5 @@
 "use client"
-import config from '../../../../config/index'
+
 import { useState } from "react"
 import { toast } from "react-toastify";
 

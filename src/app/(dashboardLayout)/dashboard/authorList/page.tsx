@@ -1,10 +1,10 @@
 'use client'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from "next/image"
-import config from '../../../../config'
 
 
-const page = () => {
+
+const Page = () => {
     const [list, setList] = useState({})
     const [isLoading, setLoading] = useState(true)
 
@@ -49,4 +49,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page
